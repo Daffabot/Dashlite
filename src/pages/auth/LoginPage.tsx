@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import Button from "@/shared/atoms/Button";
 import { Alert } from "@/shared/molecules/Alert";
 import LoginCardWrapper from "@/modules/auth/components/login/organisms/LoginCardWrapper";
 
