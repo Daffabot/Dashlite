@@ -7,6 +7,7 @@
   --color-white-dashlite: #f0faf9;
 }
 
+/* Dark mode override via attribute */
 :root[data-theme="dark"] {
   --color-lightblue-dashlite: #202020;
   --color-darkblue-dashlite: #666666;
@@ -14,6 +15,7 @@
   --color-white-dashlite: #ffffff;
 }
 
+/* Animations */
 @keyframes slide-in {
   from {
     transform: translateX(100%);
@@ -44,6 +46,7 @@
   animation: slide-in-left 0.3s ease-out;
 }
 
+/* Responsive tweak */
 @media (max-width: 640px) {
   .table-responsive {
     font-size: 0.75rem;
@@ -76,11 +79,6 @@ html {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -103,9 +101,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

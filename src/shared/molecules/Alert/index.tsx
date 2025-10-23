@@ -26,7 +26,7 @@ export const Alert: React.FC<AlertProps> = memo(
     return (
       <div
         className={clsx(
-          "flex items-start gap-3 p-4 rounded-xl z-10 border shadow-sm text-sm transition-all duration-300 ease-in-out",
+          "flex items-start gap-3 p-4 rounded-xl z-[99999999] fixed border shadow-sm text-sm transition-all duration-300 ease-in-out",
           {
             "bg-green-50 border-green-200 text-green-700": type === "success",
             "bg-red-50 border-red-200 text-red-700": type === "error",
@@ -37,7 +37,7 @@ export const Alert: React.FC<AlertProps> = memo(
           show
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-2 pointer-events-none",
-          display && "!opacity-100",
+          display && "!opacity-100 !static",
           className,
         )}
       >
