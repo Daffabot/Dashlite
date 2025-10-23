@@ -3,6 +3,10 @@
 Dashlite is a simple **React-based** dashboard template built with a focus on speed and lightweight performance.
 This project uses **Tailwind CSS**, **Heroicons**, and **Recharts** as the core UI foundation, and leverages **React Suspense & Lazy** for component loading optimization.
 
+## Live Demo
+
+> https://dashlite-eight.vercel.app/login
+
 ## Screenshot
 
 ![admin](./public/admin-dashboard.png)
@@ -44,7 +48,7 @@ src/
 ├── modules/
 │ ├── auth/       # Feature for auth pages
 │ └── dashboard/  # Feature for dashboard pages
-├── pages/        # Pages (Dashboard, Users, Settings, Notifications, Accounts, etc.)
+├── pages/        # Pages (Dashboard, Users, Settings, etc.)
 ├── routes/       # Main routing
 ├── shared/       # Global components
 ├── types/        # Global types
@@ -91,6 +95,22 @@ src/
    ```
    http://localhost:5173
    ```
+
+5. Login with this accounts:
+
+   -  Role: user
+   
+      email: ```user@example.com```
+
+   -  Role: admin
+
+      email: ```admin@example.com```
+
+   -  Role: owner
+
+      email: ```owner@example.com```
+
+   all password accounts is ```123456```
 
 ## License
 
