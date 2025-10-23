@@ -70,7 +70,7 @@ const ProfileMenu = ({ profileInfo }: { profileInfo: ProfileInfo }) => {
               logout();
               navigate("/login");
             }}
-            className="flex items-center text-red-500 gap-2 px-4 py-2 hover:bg-gray-100 hover:rounded-b-lg text-sm text-neutral-700"
+            className="flex items-center text-red-500 gap-2 px-4 py-2 hover:bg-gray-100 hover:rounded-b-lg text-sm"
           >
             <ArrowRightOnRectangleIcon className="w-5 h-5 text-red-500" />
             Log Out
