@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lightblue-dashlite: #3b82f6;
+  --color-darkblue-dashlite: #1f4b99;
+  --color-black-dashlite: #1a202c;
+  --color-white-dashlite: #f0faf9;
+}
+
+:root[data-theme="dark"] {
+  --color-lightblue-dashlite: #202020;
+  --color-darkblue-dashlite: #666666;
+  --color-black-dashlite: #000000;
+  --color-white-dashlite: #ffffff;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.3s ease-out;
+}
+
+@media (max-width: 640px) {
+  .table-responsive {
+    font-size: 0.75rem;
+  }
+
+  .table-responsive th,
+  .table-responsive td {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .table-responsive th:first-child,
+  .table-responsive td:first-child {
+    padding-left: 0.5rem;
+  }
+
+  .table-responsive th:last-child,
+  .table-responsive td:last-child {
+    padding-right: 0.5rem;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
