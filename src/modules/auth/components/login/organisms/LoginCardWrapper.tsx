@@ -30,8 +30,6 @@ const LoginCardWrapper: React.FC = () => {
       if (res.success) {
         triggerAlert();
         navigate("/dashboard");
-      } else {
-        setError(res.message);
       }
     } catch (err: any) {
       console.error("Unexpected error during login:", err);

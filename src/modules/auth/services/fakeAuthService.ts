@@ -46,6 +46,8 @@ export async function register(
     setTimeout(() => {
       if (USERS.some((u) => u.email === email))
         return reject("Email already exists");
+      if(!password)
+        return reject("Invalid password");
 
       const newUser: User = {
         id: USERS.length + 1,

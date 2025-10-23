@@ -6,11 +6,12 @@ import {
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
+import type { ProfileInfo } from "@/types";
 
 /**
  * Avatar-triggered profile dropdown with quick links and logout action.
  */
-const ProfileMenu = ({ profileInfo }) => {
+const ProfileMenu = ({ profileInfo }: { profileInfo: ProfileInfo }) => {
   const navigate = useNavigate();
   const { logout } = useAuth();
 

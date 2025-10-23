@@ -4,6 +4,8 @@ import Card from "@/shared/molecules/Card";
 import { Form, FormField } from "@/shared/molecules/Form";
 import { Input } from "@/shared/atoms/Input";
 import Button from "@/shared/atoms/Button";
+import { Alert } from "@/shared/molecules/Alert";
+import { triggerAlert } from "@/utils/alertBus";
 
 /**
  * Account settings page allowing users to update their profile information.

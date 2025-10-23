@@ -19,7 +19,6 @@ const CodePage = lazy(() => import("@/pages/CodePage"));
 const ForgotPasswordPage = lazy(
   () => import("@/pages/auth/ForgotPasswordPage"),
 );
-const Template = lazy(() => import("@/pages/Template"));
 
 const code = {
   notFoundProps: {
@@ -108,10 +107,6 @@ export function GetRoutes(): RouteObject[] {
         {
           path: "/forbidden",
           element: <CodePage codeProps={code.forbiddenProps} />,
-        },
-        {
-          path: "/template",
-          element: <Template />,
         },
         {
           path: "*",

@@ -37,12 +37,9 @@ const SignUpCardWrapper: React.FC = () => {
       const res = await register(username, email, password);
 
       if (!res.success) {
-        setError(res.message);
-        return;
+        triggerAlert();
+        navigate("/login");
       }
-
-      triggerAlert();
-      navigate("/login");
     } catch (err: any) {
       console.error("Unexpected error during registration:", err);
       setError(`Unexpected error during registration: ${err}`);

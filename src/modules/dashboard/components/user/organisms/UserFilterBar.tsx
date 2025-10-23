@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Input } from "@/shared/atoms/Input";
-import { UserFilterBarProps } from "@/types";
+import type { UserFilterBarProps } from "@/types";
 
 const ROLE_OPTIONS = [
   { value: "all", label: "All Role" },

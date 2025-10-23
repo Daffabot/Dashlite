@@ -10,10 +10,7 @@ import {
 } from "../services/fakeAuthService";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<AuthUser | null>(() => {
-    const data = getCurrentUser();
-    return data;
-  });
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [isReady, setIsReady] = useState<boolean>(true);
 
   // Optional verification step: attempt to hydrate from API if available

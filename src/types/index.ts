@@ -228,7 +228,7 @@ export interface AuthContextType {
   user: AuthUser | null;
   isReady: boolean;
   login: (email: string, password: string) => Promise<AuthUser>;
-  register?: (
+  register: (
     name: string,
     email: string,
     password: string,

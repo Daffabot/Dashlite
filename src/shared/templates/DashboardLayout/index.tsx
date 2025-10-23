@@ -30,6 +30,7 @@ import { hasAccess } from "@/modules/auth/constants/roles";
  */
 const DashboardLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
   const { logout, user } = useAuth();
+  if (!user) throw new Error("User must be logged in");
   const navigate = useNavigate();
 
   /**

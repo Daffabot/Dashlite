@@ -11,6 +11,7 @@ import { triggerAlert } from "@/utils/alertBus";
  */
 const AccountCardWrapper: React.FC = () => {
   const { user } = useAuth();
+  if (!user) throw new Error("User must be logged in");
   const [email, setEmail] = useState(user.email);
   const [username, setUsername] = useState(user.username);
 

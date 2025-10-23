@@ -6,6 +6,7 @@ import { hasAccess } from "@/modules/auth/constants/roles";
 
 const DashboardWrapperUser = memo(() => {
   const { user } = useAuth();
+  if (!user) throw new Error("User must be logged in");
   const isAdmin = hasAccess(user?.role, "admin");
   const gridCols = isAdmin ? "lg:grid-cols-2" : "grid-cols-1";
   return (
