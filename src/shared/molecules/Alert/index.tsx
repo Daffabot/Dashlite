@@ -26,7 +26,7 @@ export const Alert: React.FC<AlertProps> = memo(
     return (
       <div
         className={clsx(
-          "flex items-start gap-3 p-4 rounded-xl border shadow-sm text-sm transition-all duration-300 ease-in-out",
+          "flex items-start gap-3 p-4 rounded-xl z-10 border shadow-sm text-sm transition-all duration-300 ease-in-out",
           {
             "bg-green-50 border-green-200 text-green-700": type === "success",
             "bg-red-50 border-red-200 text-red-700": type === "error",

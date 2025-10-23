@@ -1,53 +1,80 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useState,
+  useCallback,
+  useMemo,
+} from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import type { Theme, ThemeProviderProps, ThemeContextType } from "@/types";
 
+/**
+ * ThemeProvider — handles light/dark/system theme with full mobile safety.
+ * No flicker, no mismatch, consistent color rendering across devices.
+ */
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
   defaultTheme = "system",
 }) => {
   const [theme, setTheme] = useState<Theme>(() => {
-    const stored = localStorage.getItem("theme") as Theme;
+    if (typeof window === "undefined") return defaultTheme;
+    const stored = localStorage.getItem("theme") as Theme | null;
     return stored || defaultTheme;
   });
 
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    const root = window.document.documentElement;
+  useLayoutEffect(() => {
+    const root = document.documentElement;
 
-    const updateTheme = () => {
-      let effectiveTheme = theme;
-
-      if (theme === "system") {
-        effectiveTheme = window.matchMedia("(prefers-color-scheme: dark)")
-          .matches
+    const applyTheme = (t: Theme) => {
+      let resolved = t;
+      if (t === "system") {
+        resolved = window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
           : "light";
       }
 
-      const isDarkMode = effectiveTheme === "dark";
-      setIsDark(isDarkMode);
-
-      root.setAttribute("data-theme", effectiveTheme);
+      root.setAttribute("data-theme", resolved);
+      root.style.colorScheme = resolved;
+      setIsDark(resolved === "dark");
     };
 
-    updateTheme();
-    localStorage.setItem("theme", theme);
+    applyTheme(theme);
+    setMounted(true);
 
-    // Listen for system theme changes
     if (theme === "system") {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-      mediaQuery.addEventListener("change", updateTheme);
-      return () => mediaQuery.removeEventListener("change", updateTheme);
+      const media = window.matchMedia("(prefers-color-scheme: dark)");
+      const handler = () => applyTheme("system");
+      media.addEventListener("change", handler);
+      return () => media.removeEventListener("change", handler);
     }
   }, [theme]);
 
-  const value: ThemeContextType = {
-    theme,
-    setTheme,
-    isDark,
-  };
+  useEffect(() => {
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {
+      // ignore Safari private mode errors
+    }
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  }, []);
+
+  const value: ThemeContextType = useMemo(
+    () => ({
+      theme,
+      setTheme,
+      toggleTheme,
+      isDark,
+    }),
+    [theme, isDark, toggleTheme]
+  );
+
+  if (!mounted) return null; // prevent initial paint flicker
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
