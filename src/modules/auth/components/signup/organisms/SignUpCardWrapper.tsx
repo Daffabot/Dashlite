@@ -36,7 +36,7 @@ const SignUpCardWrapper: React.FC = () => {
 
       const res = await register(username, email, password);
 
-      if (!res.success) {
+      if (res.success) {
         triggerAlert();
         navigate("/login");
       }

@@ -220,6 +220,7 @@ export interface AuthUser {
   username: string;
   email: string;
   role: "user" | "admin" | "owner";
+  password: string;
   token?: string;
   success?: boolean;
 }
@@ -245,6 +246,7 @@ export interface User {
   email: string;
   role: RoleFake;
   token: string;
+  password: string;
 }
 
 // authService types

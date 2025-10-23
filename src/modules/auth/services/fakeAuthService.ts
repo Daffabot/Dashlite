@@ -7,6 +7,7 @@ const USERS: User[] = [
     email: "user@example.com",
     role: "user",
     token: "token-user",
+    password: "123456"
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const USERS: User[] = [
     email: "admin@example.com",
     role: "admin",
     token: "token-admin",
+    password: "123456"
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ const USERS: User[] = [
     email: "owner@example.com",
     role: "owner",
     token: "token-owner",
+    password: "123456"
   },
 ];
 
@@ -29,7 +32,7 @@ export async function login(email: string, password: string): Promise<User> {
     setTimeout(() => {
       const user = USERS.find((u) => u.email === email);
       if (!user) return reject("User not found");
-      if (password !== "123456") return reject("Invalid password");
+      if (password !== user.password) return reject("Invalid password");
 
       sessionStorage.setItem("user", JSON.stringify(user));
       resolve(user);
@@ -55,6 +58,7 @@ export async function register(
         email,
         role: "user",
         token: "token-" + Math.random().toString(36).substring(2, 8),
+        password: password
       };
 
       USERS.push(newUser);

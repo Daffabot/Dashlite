@@ -11,7 +11,7 @@ const Breadcrumbs = () => {
   const segments = location.pathname.split("/").filter(Boolean);
 
   return (
-    <div className="flex items-center text-sm font-bold w-fit">
+    <div className="flex flex-wrap items-center text-sm font-bold gap-y-2 break-words max-w-full">
       <HomeIcon className="stroke-2 w-5 h-5" />
 
       {segments.map((segment, index) => {
