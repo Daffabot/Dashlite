@@ -47,9 +47,11 @@ const ProfileMenu = ({ profileInfo }: { profileInfo: ProfileInfo }) => {
 
       {open && (
         <div className="absolute right-0 mt-2 w-48 bg-white drop-shadow-lg border border-slate-300 rounded-lg z-50">
+          <p className="px-4 py-2 gap-2 text-sm bg-neutral-200">{profileInfo.name}</p>
+          <p className="px-4 pb-2 gap-2 text-sm bg-neutral-200">{profileInfo.email}</p>
           <Link
             to="/dashboard/accounts/notifications"
-            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 hover:rounded-t-lg text-sm text-neutral-700"
+            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 text-sm text-neutral-700"
             onClick={() => setOpen(false)}
           >
             <BellIcon className="w-5 h-5 text-gray-500" />
