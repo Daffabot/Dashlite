@@ -37,7 +37,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       }
 
       root.setAttribute("data-theme", resolved);
-      root.style.colorScheme = resolved;
       setIsDark(resolved === "dark");
     };
 
