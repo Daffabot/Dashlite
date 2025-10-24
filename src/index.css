@@ -1,18 +1,25 @@
 @import "tailwindcss";
 
-@theme {
-  --color-lightblue-dashlite: #3b82f6;
-  --color-darkblue-dashlite: #1f4b99;
-  --color-black-dashlite: #1a202c;
-  --color-white-dashlite: #f0faf9;
+:root {
+  --lightblue-dashlite: #3b82f6;
+  --darkblue-dashlite: #1f4b99;
+  --black-dashlite: #1a202c;
+  --white-dashlite: #f0faf9;
 }
 
 /* Dark mode override via attribute */
 :root[data-theme="dark"] {
-  --color-lightblue-dashlite: #202020;
-  --color-darkblue-dashlite: #666666;
-  --color-black-dashlite: #000000;
-  --color-white-dashlite: #ffffff;
+  --lightblue-dashlite: #202020;
+  --darkblue-dashlite: #666666;
+  --black-dashlite: #000000;
+  --white-dashlite: #ffffff;
+}
+
+@theme {
+  --color-lightblue-dashlite: var(--lightblue-dashlite);
+  --color-darkblue-dashlite: var(--darkblue-dashlite);
+  --color-black-dashlite: var(--black-dashlite);
+  --color-white-dashlite: var(--white-dashlite);
 }
 
 /* Animations */
